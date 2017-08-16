@@ -17,7 +17,7 @@ export default [
   },
   {
     id: 4,
-    type: 'square',
+    type: 'rectangular',
     name: 'third',
     warning: false,
     players: 4,
@@ -25,7 +25,7 @@ export default [
   },
   {
     id: 5,
-    type: 'round',
+    type: 'rectangular',
     name: 'third',
     warning: false,
     players: 10,

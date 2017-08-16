@@ -12,7 +12,7 @@
   min-width: 300px;
   width: 300px;
   height: 300px;
-  margin: 100px 50px;
+  margin: 0 50px;
   background-color: #006400;
   color: #fff;
 }
@@ -20,6 +20,11 @@
 .Table_round {
   border-radius: 24%;
   background-color: #556b2f;
+}
+
+.Table_rectangular {
+  width: 200px;
+  height: 400px;
 }
 
 .Table_warning {
