@@ -43,8 +43,8 @@ class TablesList extends PureComponent {
 
 TablesList.propTypes = {
   tables: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    type: PropTypes.oneOf(['round', 'square']).isRequired,
+    id: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['round', 'square', 'rectangular']).isRequired,
     name: PropTypes.string.isRequired,
     warning: PropTypes.bool.isRequired,
     players: PropTypes.number.isRequired,

@@ -29,7 +29,7 @@ const Table = ({ name, type, warning, players, maxPlayers }) => (
 );
 
 Table.propTypes = {
-  type: PropTypes.oneOf(['round', 'square']).isRequired,
+  type: PropTypes.oneOf(['round', 'square', 'rectangular']).isRequired,
   name: PropTypes.string.isRequired,
   warning: PropTypes.bool.isRequired,
   players: PropTypes.number.isRequired,

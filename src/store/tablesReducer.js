@@ -1,7 +1,9 @@
-import preloadedState from './preloadedState';
+// import preloadedState from './preloadedState';
 //import { ADD_CITY, REMOVE_CITY, SIGN_IN } from '../actions/actionTypes';
+import tableList from '../fakeApi/tableList';
 
-
+const preloadedState = tableList();
+console.log(preloadedState);
 
 const tablesReducer = (state = preloadedState, action) => {
   switch (action.type) {

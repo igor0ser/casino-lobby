@@ -17,6 +17,10 @@
   color: #fff;
 }
 
+.Table__header {
+  text-transform: uppercase;
+}
+
 .Table_round {
   border-radius: 24%;
   background-color: #556b2f;
