@@ -1,18 +1,15 @@
 import random from 'lodash/random';
-import createTables from './createTables';
+import range from 'lodash/range';
 import createTable from './createTable';
 
-let tables = [];
+let tables = range(random(n)).map(createTable);
 
 const fakeApi = {
-  tableList() {
-    const newTables = createTables(100);
-    tables = newTables;
-
+  getTables() {
     return tables;
   },
 
-  newTableAdded() {
+  tableAdded() {
     const newTable = createTable();
     const afterIndex = random(appState.tables.length);
     const afterId = tables[afterId].id;
@@ -30,15 +27,21 @@ const fakeApi = {
     const removeIndex = random(appState.tables.length);
     const removeId = tables[removeIndex].id
 
-    tables = tables.filter((t, index) => index !== removeIndex);
+    tables = tables.filter(({ id }) => id !== removeId);
 
     return { removeId };
   },
 
-  tableUpdated() {
-    const updateIndex = random(appState.tables.length);
+  removeTable(id) {
+    tables = tables.filter(({ id }) => id !== removeId);
 
-    return { };
+    return true;
+  }
+
+  addTable(table) {
+    tables = [table, ...tables];
+
+    return true;
   }
 };
 

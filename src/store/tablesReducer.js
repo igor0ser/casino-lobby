@@ -1,19 +1,23 @@
-// import preloadedState from './preloadedState';
-//import { ADD_CITY, REMOVE_CITY, SIGN_IN } from '../actions/actionTypes';
-import tableList from '../fakeApi/tableList';
+import { TABLE_LIST, TABLE_REMOVED, TABLE_ADDED, TABLE_UPDATED } from '../actions';
 
-const preloadedState = tableList();
-console.log(preloadedState);
-
-const tablesReducer = (state = preloadedState, action) => {
+const tablesReducer = (state = [], action) => {
   switch (action.type) {
-/*    case ADD_CITY:
-      if (state.find(({ id }) => id === action.payload.id)) {
-        return state;
-      }
-      return [action.payload, ...state];
-    case REMOVE_CITY:
-      return state.filter(({ id }) => id !== action.payload);*/
+    case TABLE_LIST:
+      return action.payload;
+    case TABLE_REMOVED:
+      return state.filter(({ id }) => id !== action.payload);
+    case TABLE_ADDED:
+      const { after_id, table } = action.payload;
+      return [
+        ...state.slice(0, after_id),
+        table,
+        ...state.slice(after_id)
+      ];
+    case TABLE_UPDATED:
+      const updatedTable = action.payload;
+      return state.map(table =>
+        (updatedTable.id === table.id ? updatedTable : table)
+      );
     default:
       return state;
   }
