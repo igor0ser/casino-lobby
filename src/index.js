@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
 import './styles.css';
-import socket from './utils/socket';
+import socket from './socket';
 
 socket(store);
 

@@ -1,11 +1,15 @@
 /* eslint react/no-array-index-key: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { connect } from 'react-redux';
 import range from 'lodash/range';
+import removeTable from '../../actions/removeTable';
+import goToEditTable from '../../actions/goToEditTable';
 import './Table.css';
 
-const Table = ({ name, participants }) => (
+const Table = ({
+  id, name, participants, dispatchRemoveTable, dispatchGoToEditTable
+}) => (
   <li className="Table">
     <h1 className="Table__header">{name}</h1>
     <ul className="Table__chairList">
@@ -13,12 +17,32 @@ const Table = ({ name, participants }) => (
         <li key={item} className="Table__chair" />
       ))}
     </ul>
+    <div className="Table__btnWrap">
+      <button
+        className="btn Table__edit"
+        onClick={() => dispatchGoToEditTable(id)}
+      >
+        edit
+      </button>
+      <button
+        className="btn Table__remove"
+        onClick={() => dispatchRemoveTable(id)}
+      >
+        remove
+      </button>
+    </div>
   </li>
 );
 
 Table.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  participants: PropTypes.number.isRequired
+  participants: PropTypes.number.isRequired,
+  dispatchRemoveTable: PropTypes.func.isRequired,
+  dispatchGoToEditTable: PropTypes.func.isRequired
 };
 
-export default Table;
+export default connect(null, {
+  dispatchRemoveTable: removeTable,
+  dispatchGoToEditTable: goToEditTable
+})(Table);

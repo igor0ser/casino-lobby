@@ -3,20 +3,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from './components/Header/Header';
 import TableList from './components/TableList/TableList';
+import AddTable from './components/AddTable/AddTable';
+import EditTable from './components/EditTable/EditTable';
 
-const App = ({ connection }) => (
+const App = ({ connection, editableTable }) => (
   <div className="App">
     <Header />
-    { connection ? <TableList /> : (
+    { connection ? (
+      <main>
+        <TableList />
+        {editableTable && <EditTable id={editableTable} />}
+        <AddTable />
+      </main>
+    ) : (
       <b>Trying to connect to server</b>
     )}
   </div>
 );
 
 App.propTypes = {
-  connection: PropTypes.bool.isRequired
+  connection: PropTypes.bool.isRequired,
+  editableTable: PropTypes.number
 };
 
 export default connect(
-  ({ connection }) => ({ connection })
+  ({ connection, editableTable }) => ({ connection, editableTable }),
 )(App);

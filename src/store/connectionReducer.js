@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESSFUL } from '../actions';
+import { LOGIN_SUCCESSFUL } from '../actions/actionTypes';
 
 const connectionReducer = (state = false, action) => {
   switch (action.type) {

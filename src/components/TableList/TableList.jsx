@@ -11,40 +11,36 @@ class TablesList extends PureComponent {
 
     this.state = {
       scrolled: 0,
-      shown: 4
+      shown: 4,
+      scrollLeft: 0
     };
-  /*  this.state = {
+    this.state = {
       start: 0,
       end: 10
-    };*/
+    };
   }
 
   onScroll = ({ target: { scrollLeft } }) => {
-    this.setState(state => scrollRenderer(state, scrollLeft));
-    // this.setState(scrollRenderer(scrollLeft));
+    this.setState(scrollRenderer(scrollLeft));
   }
 
   render() {
-    const { shown } = this.state;
     const { tables } = this.props;
+    const { start, end } = this.state;
 
-
-  /*  console.log('----------');
-    console.log(start);
-    console.log(end);
-    console.log(width);
-*/
     return (
       <ul
         className="TableList"
         onScroll={this.onScroll}
       >
-        {tables.slice(0, shown).map(table => (
+        <li style={{ minWidth: start * tableWidth }} />
+        {tables.slice(start, end).map(table => (
           <Table
             {...table}
             key={table.id}
           />
         ))}
+        <li style={{ minWidth: (tables.length - end) * tableWidth }} >.</li>
       </ul>
     );
   }

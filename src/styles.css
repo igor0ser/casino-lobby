@@ -29,12 +29,16 @@ body {
     background-color: #e6e6fa;
 }
 
-.text-input {
+.input {
   padding: 8px;
   margin: 8px;
   border-radius: 6px;
   border-color: #458b74;
   outline: none;
+}
+
+.text-input {
+  min-width: 300px;
 }
 
 ul {
