@@ -1,9 +1,8 @@
 import {
   actionsFromSocket, actionsFromUser
 } from '../actions/actionTypes';
-import { actionToMessage, messageToAction } from './helpers';
-import logMessage from './logMessage';
-import getTables from './getTables';
+import { actionToMessage, messageToAction, getTablesData } from './helpers';
+import logSocket from './logSocket';
 
 const errorTypes = ['removal_failed', 'update_failed'];
 
@@ -27,14 +26,14 @@ export default (store) => {
       password: 'password1234'
     }));
 
-    getTables(socket);
+    getTablesData(socket);
 
     socket.onmessage = (message) => {
       const action = messageToAction(message.data);
-      logMessage(action);
+      logSocket(action);
 
       if (errorTypes.includes(action.type)) {
-        getTables(socket);
+        getTablesData(socket);
         return;
       }
 
