@@ -9,7 +9,7 @@ export const ADD_TABLE = 'add_table';
 export const EDIT_TABLE = 'update_table';
 export const GO_TO_EDIT_TABLE = 'go_to_edit_table';
 
-export const actionsFromSocket = [
+export const socketActions = [
   LOGIN_SUCCESSFUL,
   TABLE_LIST,
   TABLE_REMOVED,
@@ -17,6 +17,6 @@ export const actionsFromSocket = [
   TABLE_UPDATED
 ];
 
-export const actionsFromUser = [
+export const userActions = [
   REMOVE_TABLE, ADD_TABLE, EDIT_TABLE
 ];

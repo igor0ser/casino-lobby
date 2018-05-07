@@ -1,6 +1,4 @@
-import {
-  actionsFromSocket, actionsFromUser
-} from '../actions/actionTypes';
+import { socketActions, userActions } from '../actions/actionTypes';
 import { actionToMessage, messageToAction, getTablesData } from './helpers';
 import logSocket from './logSocket';
 
@@ -10,7 +8,7 @@ let socket;
 
 export const socketMiddleware = () => next => (action) => {
   const result = next(action);
-  if (socket && actionsFromUser.includes(action.type)) {
+  if (socket && userActions.includes(action.type)) {
     socket.send(actionToMessage(action));
   }
   return result;
@@ -37,7 +35,7 @@ export default (store) => {
         return;
       }
 
-      if (actionsFromSocket.includes(action.type)) {
+      if (socketActions.includes(action.type)) {
         store.dispatch(action);
       }
     };
