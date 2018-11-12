@@ -1,20 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import addTable from '../../actions/addTable';
+import { addTable } from '../../actions/actionCreators';
 import TableForm from '../shared/TableForm';
 
 import './AddTable.css';
 
 class AddTable extends PureComponent {
   state = {
-    expanded: false
+    expanded: false,
   }
 
   onSubmit = (table) => {
-    const { dispathAddTable, tables } = this.props;
+    const { dispatchAddTable, tables } = this.props;
 
-    dispathAddTable({
+    dispatchAddTable({
       after_id: tables[tables.length - 1].id,
       table
     });
@@ -43,13 +43,13 @@ class AddTable extends PureComponent {
 }
 
 AddTable.propTypes = {
-  dispathAddTable: PropTypes.func.isRequired,
+  dispatchAddTable: PropTypes.func.isRequired,
   tables: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
   })).isRequired,
 };
 
 export default connect(
   ({ tables }) => ({ tables }),
-  { dispathAddTable: addTable }
+  { dispatchAddTable: addTable },
 )(AddTable);

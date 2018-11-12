@@ -11,9 +11,9 @@ const App = ({ connection, editableTable }) => (
     <Header />
     { connection ? (
       <main>
+        <AddTable />
         <TableList />
         {editableTable && <EditTable id={editableTable} />}
-        <AddTable />
       </main>
     ) : (
       <b>Trying to connect to server</b>

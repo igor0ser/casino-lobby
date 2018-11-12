@@ -12,11 +12,11 @@ class TablesList extends PureComponent {
     this.state = {
       scrolled: 0,
       shown: 4,
-      scrollLeft: 0
+      scrollLeft: 0,
     };
     this.state = {
       start: 0,
-      end: 10
+      end: 10,
     };
   }
 
@@ -51,9 +51,7 @@ TablesList.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     participants: PropTypes.number.isRequired,
-  })).isRequired
+  })).isRequired,
 };
 
-export default connect(
-  ({ tables }) => ({ tables })
-)(TablesList);
+export default connect(({ tables }) => ({ tables }))(TablesList);

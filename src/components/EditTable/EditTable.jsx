@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import editTable from '../../actions/editTable';
+import { updateTable } from '../../actions/actionCreators';
 import TableForm from '../shared/TableForm';
 
 import './EditTable.css';
 
-const EditTable = ({ tables, dispathEditTable, id }) => {
+const EditTable = ({ tables, dispatchUpdateTable, id }) => {
   const { name, participants } =
     tables.find(t => t.id === id) || {};
 
   return (
     <TableForm
-      onSubmit={table => dispathEditTable({ ...table, id })}
+      onSubmit={table => dispatchUpdateTable({ ...table, id })}
       headerText="Edit Table"
       btnText="Save"
       defaultName={name}
@@ -24,7 +24,7 @@ const EditTable = ({ tables, dispathEditTable, id }) => {
 
 EditTable.propTypes = {
   id: PropTypes.number.isRequired,
-  dispathEditTable: PropTypes.func.isRequired,
+  dispatchUpdateTable: PropTypes.func.isRequired,
   tables: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired
   })).isRequired,
@@ -32,5 +32,5 @@ EditTable.propTypes = {
 
 export default connect(
   ({ tables }) => ({ tables }),
-  { dispathEditTable: editTable }
+  { dispatchUpdateTable: updateTable }
 )(EditTable);

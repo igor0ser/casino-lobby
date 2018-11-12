@@ -1,14 +1,12 @@
-/* eslint react/no-array-index-key: 0 */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import range from 'lodash/range';
-import removeTable from '../../actions/removeTable';
-import goToEditTable from '../../actions/goToEditTable';
+import { removeTable, goToEditTable } from '../../actions/actionCreators';
 import './Table.css';
 
 const Table = ({
-  id, name, participants, dispatchRemoveTable, dispatchGoToEditTable
+  id, name, participants, dispatchRemoveTable, dispatchGoToEditTable,
 }) => (
   <li className="Table">
     <h1 className="Table__header">{name}</h1>
@@ -39,10 +37,10 @@ Table.propTypes = {
   name: PropTypes.string.isRequired,
   participants: PropTypes.number.isRequired,
   dispatchRemoveTable: PropTypes.func.isRequired,
-  dispatchGoToEditTable: PropTypes.func.isRequired
+  dispatchGoToEditTable: PropTypes.func.isRequired,
 };
 
 export default connect(null, {
   dispatchRemoveTable: removeTable,
-  dispatchGoToEditTable: goToEditTable
+  dispatchGoToEditTable: goToEditTable,
 })(Table);
