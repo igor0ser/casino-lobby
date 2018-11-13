@@ -10,11 +10,6 @@ class TablesList extends PureComponent {
     super(props);
 
     this.state = {
-      scrolled: 0,
-      shown: 4,
-      scrollLeft: 0,
-    };
-    this.state = {
       start: 0,
       end: 10,
     };
