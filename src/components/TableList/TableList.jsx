@@ -6,13 +6,9 @@ import scrollRenderer, { tableWidth } from './scrollRenderer';
 import './TableList.css';
 
 class TablesList extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      start: 0,
-      end: 10,
-    };
+  state = {
+    start: 0,
+    end: 10,
   }
 
   onScroll = ({ target: { scrollLeft } }) => {
@@ -30,10 +26,7 @@ class TablesList extends PureComponent {
       >
         <li style={{ minWidth: start * tableWidth }} />
         {tables.slice(start, end).map(table => (
-          <Table
-            {...table}
-            key={table.id}
-          />
+          <Table {...table} key={table.id} />
         ))}
         <li style={{ minWidth: (tables.length - end) * tableWidth }} >.</li>
       </ul>

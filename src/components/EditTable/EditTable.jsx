@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateTable } from '../../actions/actionCreators';
-import TableForm from '../shared/TableForm';
+import TableForm from '../shared/TableForm/TableForm';
 
 import './EditTable.css';
 

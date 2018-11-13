@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addTable } from '../../actions/actionCreators';
-import TableForm from '../shared/TableForm';
+import TableForm from '../shared/TableForm/TableForm';
 
 import './AddTable.css';
 
